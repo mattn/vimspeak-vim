@@ -28,6 +28,26 @@ Speak(char* text) {
   static VARIANT result;
   static DISPPARAMS param;
   param.rgvarg = &args[0];
+  int x = -1, y = -1;
+
+  char* ptr = text;
+  char* tmp;
+
+  tmp = ptr;
+  if (ptr = strchr(ptr, '\t')) {
+    *ptr++ = 0;
+    x = atoi(tmp);
+    text = ptr;
+  }
+  tmp = ptr;
+  if (ptr = strchr(ptr, '\t')) {
+    *ptr++ = 0;
+    y = atoi(tmp);
+    text = ptr;
+  }
+  if (ptr) {
+    text = ptr;
+  }
   
   if (!pAgentEx || !pCharacterEx) {
     hr = CoInitialize(NULL);
@@ -81,21 +101,23 @@ Speak(char* text) {
 
     if (!SUCCEEDED(hr)) return FALSE;
   
-    // SetPosition
-    name = SysAllocString(L"SetPosition");
-    hr = pCharacterEx->lpVtbl->GetIDsOfNames(pCharacterEx, &IID_NULL, &name, 1, LOCALE_SYSTEM_DEFAULT, &dispid);
-    SysFreeString(name);
-  
-    VariantInit(&args[1]);
-    V_VT(&args[1]) = VT_I4;
-    V_I4(&args[1]) = 0;
-  
-    VariantInit(&args[0]);
-    V_VT(&args[0]) = VT_I4;
-    V_I4(&args[0]) = 0;
-  
-    hr = pCharacterEx->lpVtbl->Invoke(pCharacterEx, dispid, &IID_NULL, LOCALE_SYSTEM_DEFAULT, DISPATCH_METHOD,
-        &param, &result, NULL, NULL);
+    if (x != -1 && y != -1) {
+      // SetPosition
+      name = SysAllocString(L"SetPosition");
+      hr = pCharacterEx->lpVtbl->GetIDsOfNames(pCharacterEx, &IID_NULL, &name, 1, LOCALE_SYSTEM_DEFAULT, &dispid);
+      SysFreeString(name);
+    
+      VariantInit(&args[1]);
+      V_VT(&args[1]) = VT_I4;
+      V_I4(&args[1]) = x;
+    
+      VariantInit(&args[0]);
+      V_VT(&args[0]) = VT_I4;
+      V_I4(&args[0]) = y;
+    
+      hr = pCharacterEx->lpVtbl->Invoke(pCharacterEx, dispid, &IID_NULL, LOCALE_SYSTEM_DEFAULT, DISPATCH_METHOD,
+          &param, &result, NULL, NULL);
+    }
   } 
   
   // Show

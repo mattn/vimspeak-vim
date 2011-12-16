@@ -30,3 +30,8 @@ Author:
 -------
 
 `Yasuhiro Matsumoto <mattn.jp@gmail.com>`
+
+Screenshot:
+-----------
+
+![](http://go-gyazo.appspot.com/87be1af7cd24cb25.png)
