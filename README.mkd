@@ -4,7 +4,7 @@ VimSpeak
 Introduction:
 -------------
 
-  This is a dll which can speak text for GVim.
+  interface to speak texts from vim
 
 Installation:
 -------------
