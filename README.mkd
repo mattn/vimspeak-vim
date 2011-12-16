@@ -4,7 +4,7 @@ VimSpeak
 Introduction:
 -------------
 
-  interface to speak texts from vim
+  interface to speak texts from vim using MSAgent.
 
 Installation:
 -------------
