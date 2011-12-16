@@ -1,0 +1,32 @@
+VimSpeak
+========
+
+Introduction:
+-------------
+
+  This is a dll which can speak text for GVim.
+
+Installation:
+-------------
+
+    # cd /path/to/your/vim/bundle
+    # git clone https://github.com/mattn/vimspeak-vim
+
+Usage:
+------
+
+    :'<,'>VimSpeak
+
+  or
+
+    :VimSpeak foo
+
+License:
+--------
+
+BSD style license.
+
+Author:
+-------
+
+`Yasuhiro Matsumoto <mattn.jp@gmail.com>`
